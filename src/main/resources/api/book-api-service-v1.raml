@@ -1,0 +1,38 @@
+#%RAML 1.0
+baseUri: https://apigw-nonprod.stationary.com
+title: Book-API-Service
+version: 1.0.0
+documentation:
+  - title: Book Api to get the books information
+    content: |
+      Book API is client application
+
+traits:
+  client-header: !include exchange_modules/17b5df4e-2156-41cc-acd1-085afe5b9c51/client-header-trait/1.0.0/client-header-trait.raml
+
+/bookInfo:
+  get:
+    is:
+      - client-header
+    responses:
+      200:
+        body:
+          application/json:
+            example: {
+              "status" : "Books are not found in direcotry"
+            }
+/books:
+  post:
+    is: [client-header]
+    body:
+      application/xml:
+        example: !include example/request.xml
+    responses:
+      200:
+        body:
+          application/xml:
+            example: !include example/request.xml
+              
+              
+          
+
